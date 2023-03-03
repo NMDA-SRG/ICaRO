@@ -75,7 +75,7 @@ void task_ota(void *params) {
     ESP_LOGI("OTA","is running on %d Core", xPortGetCoreID());
     while(check_hash) {
         get_hash();
-        vTaskDelay(10000 / portTICK_RATE_MS);
+        vTaskDelay(atoi(CONFIG_OTA_TIME) * 1000 / portTICK_RATE_MS);
     }
     //get_binary();
     esp_http_client_config_t clientConfig = {
