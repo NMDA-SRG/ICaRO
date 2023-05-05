@@ -9,7 +9,7 @@ void mss_sender(void *parameters) {
     	esp_err_t ret = esp_efuse_mac_get_default(base_mac_addr);
 
     	char topic_root[25] = "                   ";
-    	sprintf(topic_root, "calma/nemo/%x%x%x%x%x%x",
+    	sprintf(topic_root, "icaro/nemo/%x%x%x%x%x%x",
              base_mac_addr[0], base_mac_addr[1], base_mac_addr[2], base_mac_addr[3], base_mac_addr[4], base_mac_addr[5]);
 
 	ESP_LOGI("INFO", "BOARD----%s", topic_root);
