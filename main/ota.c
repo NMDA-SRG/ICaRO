@@ -74,6 +74,7 @@ void get_binary() {
 void task_ota(void *params) {
     ESP_LOGI("OTA","is running on %d Core", xPortGetCoreID());
     while(check_hash) {
+        info();
         get_hash();
         if(check_hash) vTaskDelay(atoi(CONFIG_OTA_TIME) * 1000 / portTICK_RATE_MS);
     }
@@ -93,4 +94,20 @@ void task_ota(void *params) {
         esp_restart();
     }
     vTaskDelete(NULL);
+}
+
+void info() {
+  struct telemetry_message message;
+  struct timeval tv_now;
+
+  gettimeofday(&tv_now, NULL);
+  int64_t time_us = (int64_t)tv_now.tv_sec * 1000000L + (int64_t)tv_now.tv_usec;
+  
+  message.timestamp = time_us;
+  message.tm_message_type = TM_INFO;
+  sprintf(message.payload.tm_info.type, "%s",hash);
+
+  printf("%s", message.payload.tm_info.type);
+
+  xQueueSend(telemetry_queue, &message, portMAX_DELAY); 
 }

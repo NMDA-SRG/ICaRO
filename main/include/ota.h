@@ -2,6 +2,7 @@
 #define __OTA_H__
 
 #include "common.h"
+#include "datastructures.h"
 
 #define ESP_OK_HASH 0x100
 

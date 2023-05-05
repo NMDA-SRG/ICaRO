@@ -17,7 +17,7 @@ void task_pcnt(void *parameters);
 void task_detection(void *parameters);
 
 //INFO
-void task_info(void *parameters);
+void info(void);
 
 //SET UP
 void init_GPIO(void);

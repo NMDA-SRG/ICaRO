@@ -23,7 +23,7 @@ struct telemetry_message {
             uint32_t channel[3];
         } tm_detect;
         struct {
-            char type[10]; 
+            char type[90]; 
         } tm_info;
   } payload;
 };
